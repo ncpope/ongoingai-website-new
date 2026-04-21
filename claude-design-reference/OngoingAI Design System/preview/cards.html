@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;padding:0;background:var(--bg);overflow:hidden}
+  .wrap{padding:22px 28px;height:100vh;box-sizing:border-box;display:flex;align-items:center;gap:16px}
+  .card{flex:1;padding:18px 20px;background:var(--bg-elevated);border:1px solid var(--border-1);border-radius:14px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:8px}
+  .card.hero{background:var(--orange-400);border-color:var(--ink-900);color:var(--fg-on-accent);box-shadow:none}
+  .card.print{background:var(--bg-elevated);border:1px solid var(--ink-900);border-radius:14px;box-shadow:none}
+  .eyebrow{font:500 10px var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--fg-3)}
+  .hero .eyebrow{color:var(--ink-800);opacity:.8}
+  h4{margin:0;font:600 16px var(--font-sans);color:inherit}
+  p{margin:0;font:400 13px var(--font-sans);color:var(--fg-2);line-height:1.5}
+  .hero p{color:var(--ink-800)}
+</style></head><body>
+<div class="wrap">
+  <div class="card"><span class="eyebrow">Default · paper</span><h4>Checkpoints</h4><p>Roll back a bad idea in one click.</p></div>
+  <div class="card print"><span class="eyebrow">Printed · 1px ink</span><h4>Branches</h4><p>Every change is a branch.</p></div>
+  <div class="card hero"><span class="eyebrow">Hero · orange</span><h4>Stay in the vibe.</h4><p>Inverted card for moments of emphasis.</p></div>
+</div>
+</body></html>

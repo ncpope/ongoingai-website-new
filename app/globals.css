@@ -1,0 +1,284 @@
+/* ============================================================
+   OngoingAI — Core tokens
+   Ported from claude-design-reference/colors_and_type.css
+   ============================================================ */
+
+:root {
+  /* Brand orange (from logo background #FD953B) */
+  --orange-50:  #FFF6EE;
+  --orange-100: #FFE8D1;
+  --orange-200: #FFD1A3;
+  --orange-300: #FFB470;
+  --orange-400: #FD953B;
+  --orange-500: #F07A1B;
+  --orange-600: #CC5F0E;
+  --orange-700: #9E4708;
+  --orange-800: #6F3106;
+  --orange-900: #3F1C05;
+
+  /* Ink / warm neutrals */
+  --ink-0:   #FFFFFF;
+  --ink-50:  #FAF8F5;
+  --ink-100: #F2EFE9;
+  --ink-200: #E6E2DA;
+  --ink-300: #CBC6BC;
+  --ink-400: #9D978C;
+  --ink-500: #6E6960;
+  --ink-600: #4A4640;
+  --ink-700: #2E2B27;
+  --ink-800: #1A1815;
+  --ink-900: #0E0D0B;
+
+  /* Semantic */
+  --success: #2E7D4F;
+  --warning: #D98E00;
+  --danger:  #C2410C;
+  --info:    #2563A8;
+
+  /* Surfaces */
+  --bg: var(--ink-50);
+  --bg-elevated: var(--ink-0);
+  --bg-inverse: var(--ink-900);
+  --bg-accent: var(--orange-400);
+  --bg-accent-subtle: var(--orange-50);
+
+  /* Foregrounds */
+  --fg-1: var(--ink-900);
+  --fg-2: var(--ink-700);
+  --fg-3: var(--ink-500);
+  --fg-4: var(--ink-400);
+  --fg-on-accent: var(--ink-900);
+  --fg-on-inverse: var(--ink-50);
+
+  /* Borders */
+  --border-1: var(--ink-200);
+  --border-2: var(--ink-300);
+  --border-strong: var(--ink-900);
+
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 0 rgba(14, 13, 11, 0.04);
+  --shadow-sm: 0 1px 2px rgba(14, 13, 11, 0.06), 0 1px 0 rgba(14, 13, 11, 0.03);
+  --shadow-md: 0 4px 12px rgba(14, 13, 11, 0.08);
+  --shadow-lg: 0 18px 40px -12px rgba(14, 13, 11, 0.18);
+  --shadow-inset: inset 0 1px 0 rgba(255,255,255,0.7);
+  --shadow-glow-orange: 0 0 0 3px rgba(253, 149, 59, 0.22);
+
+  /* Spacing */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+  --s-10: 128px;
+
+  /* Type scale */
+  --t-display-1: 84px;
+  --t-display-2: 64px;
+  --t-display-3: 48px;
+  --t-h1: 40px;
+  --t-h2: 30px;
+  --t-h3: 22px;
+  --t-h4: 18px;
+  --t-body: 16px;
+  --t-small: 14px;
+  --t-micro: 12px;
+
+  --lh-display: 1.02;
+  --lh-heading: 1.15;
+  --lh-body: 1.55;
+
+  --tr-tight: -0.03em;
+  --tr-snug: -0.015em;
+  --tr-normal: 0;
+  --tr-wide: 0.08em;
+
+  /* Font-family stacks wired to next/font CSS variables */
+  --font-display: var(--font-instrument-serif), 'Times New Roman', Georgia, serif;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg-1);
+  font-family: var(--font-sans);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, .h1, h2, .h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: var(--tr-tight);
+  color: var(--fg-1);
+  margin: 0;
+}
+
+h3, .h3, h4, .h4 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: var(--tr-snug);
+  color: var(--fg-1);
+  margin: 0;
+}
+
+h1, .h1 { font-size: var(--t-h1); line-height: var(--lh-heading); }
+h2, .h2 { font-size: var(--t-h2); line-height: var(--lh-heading); }
+h3, .h3 { font-size: var(--t-h3); line-height: var(--lh-heading); }
+h4, .h4 { font-size: var(--t-h4); line-height: var(--lh-heading); }
+
+p {
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  color: var(--fg-2);
+  text-wrap: pretty;
+  margin: 0;
+}
+
+code, .code, pre {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  color: var(--fg-1);
+}
+
+a { color: inherit; }
+
+button {
+  font-family: var(--font-sans);
+  transition: transform 80ms cubic-bezier(0.2, 0.9, 0.3, 1),
+              background-color 160ms cubic-bezier(0.2, 0.9, 0.3, 1),
+              box-shadow 160ms cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+button:active { transform: scale(0.98); }
+
+.display-1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--t-display-1);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tr-tight);
+  color: var(--fg-1);
+}
+.display-2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--t-display-2);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tr-tight);
+  color: var(--fg-1);
+}
+.display-3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--t-display-3);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tr-tight);
+  color: var(--fg-1);
+}
+.display-italic { font-style: italic; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--t-micro);
+  font-weight: 500;
+  letter-spacing: var(--tr-wide);
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+
+.small { font-size: var(--t-small); color: var(--fg-3); }
+.micro { font-size: var(--t-micro); color: var(--fg-3); }
+
+.accent { color: var(--orange-500); }
+.accent-bg { background: var(--orange-400); color: var(--fg-on-accent); }
+
+/* Responsive display-1 — scale down on smaller viewports */
+@media (max-width: 768px) {
+  :root {
+    --t-display-1: 56px;
+    --t-display-2: 44px;
+    --t-display-3: 36px;
+    --t-h1: 32px;
+    --t-h2: 26px;
+  }
+}
+
+/* ─── Nav responsive behavior ───
+   These rules live in globals.css (not styled-jsx) so they are present
+   in the SSR'd stylesheet and apply on first paint — preventing a brief
+   flash of the desktop nav links on narrow viewports. */
+.nav-desktop-links,
+.nav-desktop-cta { display: flex; }
+.nav-mobile-toggle { display: none; }
+.nav-mobile-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transform: translateY(-6px);
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 200ms cubic-bezier(0.2, 0.9, 0.3, 1),
+    transform 200ms cubic-bezier(0.2, 0.9, 0.3, 1),
+    visibility 0s linear 200ms;
+}
+.nav-mobile-panel[data-open='true'] {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+  transition:
+    opacity 200ms cubic-bezier(0.2, 0.9, 0.3, 1),
+    transform 200ms cubic-bezier(0.2, 0.9, 0.3, 1),
+    visibility 0s;
+}
+@media (max-width: 900px) {
+  .nav-desktop-links,
+  .nav-desktop-cta { display: none !important; }
+  .nav-mobile-toggle { display: inline-flex; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-mobile-panel,
+  .nav-mobile-panel[data-open='true'] {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* ─── Newsletter form ─── */
+.newsletter-step {
+  animation: newsletter-step-in 240ms cubic-bezier(0.2, 0.9, 0.3, 1) both;
+}
+@keyframes newsletter-step-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.newsletter-input:focus {
+  border-color: var(--orange-500) !important;
+  box-shadow: var(--shadow-glow-orange);
+}
+@media (prefers-reduced-motion: reduce) {
+  .newsletter-step { animation: none !important; }
+}

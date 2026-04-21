@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;padding:0;background:var(--bg);overflow:hidden}
+  .card{padding:22px 28px;height:100vh;box-sizing:border-box;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .b{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font:500 12px var(--font-sans);border:1px solid transparent}
+  .neutral{background:var(--ink-100);color:var(--fg-2);border-color:var(--border-1)}
+  .brand{background:var(--orange-100);color:var(--orange-700);border-color:var(--orange-200)}
+  .success{background:#E6F2EB;color:var(--success);border-color:#BFD9C9}
+  .danger{background:#FCE8DB;color:var(--danger);border-color:#F2C7B0}
+  .inverse{background:var(--ink-900);color:var(--ink-50)}
+  .dot{width:6px;height:6px;border-radius:999px;background:currentColor}
+</style></head><body>
+<div class="card">
+  <span class="b neutral"><span class="dot"></span>Idle</span>
+  <span class="b brand">Beta</span>
+  <span class="b success"><span class="dot"></span>Deployed</span>
+  <span class="b danger">Rollback ready</span>
+  <span class="b inverse">v2.4 · checkpoint</span>
+</div>
+</body></html>

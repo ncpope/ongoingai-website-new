@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;padding:0;background:var(--bg);overflow:hidden}
+  .card{padding:20px 24px;height:100vh;box-sizing:border-box;display:flex;align-items:center;gap:20px}
+  .sw{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+  .chip{width:96px;height:64px;border-radius:10px;border:1px solid var(--border-1);display:flex;align-items:flex-end;padding:6px 8px;font:500 10px var(--font-mono);color:var(--fg-on-inverse)}
+  .chip.light{color:var(--fg-1)}
+  .label{font:500 11px var(--font-mono);letter-spacing:.05em;color:var(--fg-3);text-transform:uppercase}
+  .hex{font:500 11px var(--font-mono);color:var(--fg-3)}
+</style></head><body>
+<div class="card">
+  <div class="sw"><div class="chip" style="background:var(--orange-50)"><span class="label" style="color:var(--fg-3)">50</span></div><span class="hex">#FFF6EE</span></div>
+  <div class="sw"><div class="chip light" style="background:var(--orange-100)">100</div><span class="hex">#FFE8D1</span></div>
+  <div class="sw"><div class="chip light" style="background:var(--orange-200)">200</div><span class="hex">#FFD1A3</span></div>
+  <div class="sw"><div class="chip light" style="background:var(--orange-300)">300</div><span class="hex">#FFB470</span></div>
+  <div class="sw"><div class="chip light" style="background:var(--orange-400);outline:2px solid var(--ink-900);outline-offset:2px">400 ★</div><span class="hex" style="color:var(--fg-1);font-weight:600">#FD953B</span></div>
+  <div class="sw"><div class="chip" style="background:var(--orange-500);color:var(--fg-on-accent)">500</div><span class="hex">#F07A1B</span></div>
+  <div class="sw"><div class="chip" style="background:var(--orange-600)">600</div><span class="hex">#CC5F0E</span></div>
+  <div class="sw"><div class="chip" style="background:var(--orange-700)">700</div><span class="hex">#9E4708</span></div>
+  <div class="sw"><div class="chip" style="background:var(--orange-800)">800</div><span class="hex">#6F3106</span></div>
+  <div class="sw"><div class="chip" style="background:var(--orange-900)">900</div><span class="hex">#3F1C05</span></div>
+</div>
+</body></html>

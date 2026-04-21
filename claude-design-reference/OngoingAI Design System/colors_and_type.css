@@ -1,0 +1,232 @@
+/* ============================================================
+   OngoingAI — Core tokens
+   Colors + Type. Import this first; everything else depends on it.
+   ============================================================ */
+
+/* ---------- Fonts (Google Fonts — substitutions, see README) ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ── Brand orange (from the logo background, #FD953B)
+        Scaled out into a full ramp for UI use. ─────────────── */
+  --orange-50:  #FFF6EE;
+  --orange-100: #FFE8D1;
+  --orange-200: #FFD1A3;
+  --orange-300: #FFB470;
+  --orange-400: #FD953B;  /* ★ brand */
+  --orange-500: #F07A1B;
+  --orange-600: #CC5F0E;
+  --orange-700: #9E4708;
+  --orange-800: #6F3106;
+  --orange-900: #3F1C05;
+
+  /* ── Ink / neutrals — warm, slightly paper-ish so orange reads
+        as friendly rather than alarming ─────────────────────── */
+  --ink-0:   #FFFFFF;
+  --ink-50:  #FAF8F5; /* paper */
+  --ink-100: #F2EFE9;
+  --ink-200: #E6E2DA;
+  --ink-300: #CBC6BC;
+  --ink-400: #9D978C;
+  --ink-500: #6E6960;
+  --ink-600: #4A4640;
+  --ink-700: #2E2B27;
+  --ink-800: #1A1815;
+  --ink-900: #0E0D0B; /* near-black */
+
+  /* ── Semantic ─────────────────────────────────────────────── */
+  --success: #2E7D4F;
+  --warning: #D98E00;
+  --danger:  #C2410C;
+  --info:    #2563A8;
+
+  /* ── Surfaces ─────────────────────────────────────────────── */
+  --bg:          var(--ink-50);
+  --bg-elevated: var(--ink-0);
+  --bg-inverse:  var(--ink-900);
+  --bg-accent:   var(--orange-400);
+  --bg-accent-subtle: var(--orange-50);
+
+  /* ── Foregrounds ──────────────────────────────────────────── */
+  --fg-1: var(--ink-900);    /* primary text, display */
+  --fg-2: var(--ink-700);    /* body */
+  --fg-3: var(--ink-500);    /* secondary, meta */
+  --fg-4: var(--ink-400);    /* disabled, captions on paper */
+  --fg-on-accent: var(--ink-900); /* dark ink over orange — reads like the logo */
+  --fg-on-inverse: var(--ink-50);
+
+  /* ── Borders ──────────────────────────────────────────────── */
+  --border-1: var(--ink-200);
+  --border-2: var(--ink-300);
+  --border-strong: var(--ink-900);
+
+  /* ── Radii — mostly tight. Big radii only on pills / avatars. */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+
+  /* ── Shadows — soft, warm, low elevation. The brand is flat
+        with occasional 1px ink borders, not drop-shadow-heavy. */
+  --shadow-xs: 0 1px 0 rgba(14, 13, 11, 0.04);
+  --shadow-sm: 0 1px 2px rgba(14, 13, 11, 0.06), 0 1px 0 rgba(14, 13, 11, 0.03);
+  --shadow-md: 0 4px 12px rgba(14, 13, 11, 0.08);
+  --shadow-lg: 0 18px 40px -12px rgba(14, 13, 11, 0.18);
+  --shadow-inset: inset 0 1px 0 rgba(255,255,255,0.7);
+  --shadow-glow-orange: 0 0 0 3px rgba(253, 149, 59, 0.22);
+
+  /* ── Spacing scale (4pt) ──────────────────────────────────── */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+  --s-10: 128px;
+
+  /* ── Typography ───────────────────────────────────────────── */
+  --font-display: 'Instrument Serif', 'Times New Roman', Georgia, serif;
+  --font-sans: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Scale — display leans large and serif for marketing moments;
+     body stays Geist for UI. Keep the scale small and deliberate. */
+  --t-display-1: 84px;
+  --t-display-2: 64px;
+  --t-display-3: 48px;
+  --t-h1: 40px;
+  --t-h2: 30px;
+  --t-h3: 22px;
+  --t-h4: 18px;
+  --t-body: 16px;
+  --t-small: 14px;
+  --t-micro: 12px;
+
+  /* Line heights */
+  --lh-display: 1.02;
+  --lh-heading: 1.15;
+  --lh-body: 1.55;
+
+  /* Letter spacing */
+  --tr-tight: -0.03em;  /* display serif */
+  --tr-snug: -0.015em;  /* headings */
+  --tr-normal: 0;
+  --tr-wide: 0.08em;    /* eyebrows, all-caps labels */
+}
+
+/* ============================================================
+   Semantic element defaults (opt-in via .oai or html root)
+   ============================================================ */
+
+html, body {
+  background: var(--bg);
+  color: var(--fg-1);
+  font-family: var(--font-sans);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, .h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--t-h1);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tr-tight);
+  color: var(--fg-1);
+}
+
+h2, .h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--t-h2);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tr-tight);
+  color: var(--fg-1);
+}
+
+h3, .h3 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--t-h3);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tr-snug);
+  color: var(--fg-1);
+}
+
+h4, .h4 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--t-h4);
+  line-height: var(--lh-heading);
+  color: var(--fg-1);
+}
+
+p, .p {
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  color: var(--fg-2);
+  text-wrap: pretty;
+}
+
+.display-1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--t-display-1);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tr-tight);
+  color: var(--fg-1);
+}
+.display-2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--t-display-2);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tr-tight);
+  color: var(--fg-1);
+}
+.display-3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--t-display-3);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tr-tight);
+  color: var(--fg-1);
+}
+.display-italic { font-style: italic; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--t-micro);
+  font-weight: 500;
+  letter-spacing: var(--tr-wide);
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+
+code, .code, pre {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  color: var(--fg-1);
+}
+
+.small { font-size: var(--t-small); color: var(--fg-3); }
+.micro { font-size: var(--t-micro); color: var(--fg-3); }
+
+/* Accent text — the "ongoing" brand moment */
+.accent { color: var(--orange-500); }
+.accent-bg { background: var(--orange-400); color: var(--fg-on-accent); }
+
+/* Reusable focus ring */
+.focus-ring:focus-visible,
+:where(button, a, input, textarea, select).focus-ring:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-glow-orange);
+  border-color: var(--orange-500);
+}

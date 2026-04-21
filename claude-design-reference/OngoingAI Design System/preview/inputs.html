@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;padding:0;background:var(--bg);overflow:hidden}
+  .card{padding:22px 28px;height:100vh;box-sizing:border-box;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .field{display:flex;flex-direction:column;gap:6px}
+  label{font:500 11px var(--font-mono);color:var(--fg-3);letter-spacing:.05em;text-transform:uppercase}
+  input{font:400 14px var(--font-sans);padding:10px 12px;border-radius:6px;border:1px solid var(--border-2);background:var(--bg-elevated);color:var(--fg-1);width:200px;outline:none}
+  input:focus{border-color:var(--orange-500);box-shadow:var(--shadow-glow-orange)}
+  .error input{border-color:var(--danger)}
+  .hint{font:400 11px var(--font-sans);color:var(--fg-3)}
+  .hint.err{color:var(--danger)}
+</style></head><body>
+<div class="card">
+  <div class="field"><label>Email</label><input value="you@studio.dev"><span class="hint">We'll never send spam</span></div>
+  <div class="field"><label>Prompt</label><input value="make it pop" style="border-color:var(--orange-500);box-shadow:var(--shadow-glow-orange)"><span class="hint">Focused state</span></div>
+  <div class="field error"><label>Project</label><input value="my app!"><span class="hint err">Name already taken</span></div>
+</div>
+</body></html>

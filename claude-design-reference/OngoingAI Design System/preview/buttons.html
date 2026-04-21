@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;padding:0;background:var(--bg);overflow:hidden}
+  .card{padding:22px 28px;height:100vh;box-sizing:border-box;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  button{font:500 14px var(--font-sans);border-radius:10px;padding:10px 18px;cursor:pointer;border:1px solid transparent;transition:all 120ms cubic-bezier(.2,.9,.3,1)}
+  .primary{background:var(--orange-400);color:var(--fg-on-accent);border-color:var(--ink-900)}
+  .primary:hover{background:var(--orange-500)}
+  .secondary{background:var(--ink-900);color:var(--ink-50)}
+  .secondary:hover{background:var(--ink-800)}
+  .ghost{background:transparent;color:var(--fg-1);border-color:var(--border-2)}
+  .ghost:hover{background:var(--ink-100)}
+  .link{background:transparent;color:var(--fg-1);border:none;padding:10px 4px;text-decoration:underline;text-underline-offset:4px}
+  .pill{background:var(--ink-900);color:var(--ink-50);border-radius:999px;padding:8px 16px;font-size:13px}
+</style></head><body>
+<div class="card">
+  <button class="primary">Start building →</button>
+  <button class="secondary">See it work</button>
+  <button class="ghost">Read docs</button>
+  <button class="link">Learn more</button>
+  <button class="pill">Try it</button>
+</div>
+</body></html>

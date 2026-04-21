@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;padding:0;background:var(--bg);overflow:hidden}
+  .card{padding:22px 28px;height:100vh;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:10px}
+  .row{display:flex;align-items:baseline;gap:16px}
+  .tag{font:500 10px var(--font-mono);color:var(--fg-3);letter-spacing:.05em;text-transform:uppercase;width:72px;flex-shrink:0}
+  .s1{font-family:var(--font-display);font-size:40px;line-height:1;color:var(--fg-1);letter-spacing:-.03em}
+  .s2{font-family:var(--font-display);font-size:30px;line-height:1;color:var(--fg-1);letter-spacing:-.03em}
+  .s3{font:600 22px var(--font-sans);color:var(--fg-1);letter-spacing:-.015em}
+  .s4{font:600 18px var(--font-sans);color:var(--fg-1)}
+  .s5{font:400 16px var(--font-sans);color:var(--fg-2)}
+</style></head><body>
+<div class="card">
+  <div class="row"><span class="tag">H1 · 40</span><span class="s1">Heading one in serif</span></div>
+  <div class="row"><span class="tag">H2 · 30</span><span class="s2">Heading two in serif</span></div>
+  <div class="row"><span class="tag">H3 · 22</span><span class="s3">Heading three — Geist 600</span></div>
+  <div class="row"><span class="tag">H4 · 18</span><span class="s4">Heading four — Geist 600</span></div>
+  <div class="row"><span class="tag">Body · 16</span><span class="s5">Body text uses Geist at 16px with 1.55 line-height.</span></div>
+</div>
+</body></html>

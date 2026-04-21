@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;padding:0;background:var(--bg);overflow:hidden}
+  .card{padding:0;height:100vh;box-sizing:border-box}
+  nav{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;border-bottom:1px solid var(--border-1);background:var(--bg)}
+  .brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:22px;letter-spacing:-.02em;color:var(--fg-1)}
+  .brand img{width:32px;height:32px;display:block;border-radius:6px}
+  .links{display:flex;gap:22px;font:500 14px var(--font-sans);color:var(--fg-2)}
+  .links a{color:inherit;text-decoration:none}
+  .cta{background:var(--ink-900);color:var(--ink-50);padding:8px 14px;border-radius:999px;font:500 13px var(--font-sans);text-decoration:none}
+  .foot{height:calc(100% - 64px);padding:24px 28px;background:var(--ink-900);color:var(--ink-50);display:flex;flex-direction:column;justify-content:center;gap:8px;font:400 13px var(--font-sans)}
+  .foot .r{display:flex;gap:20px;color:var(--ink-300)}
+  .foot .big{font-family:var(--font-display);font-size:22px;letter-spacing:-.02em;color:var(--ink-50)}
+</style></head><body>
+<div class="card">
+  <nav>
+    <div class="brand">
+      <img src="../assets/logo-mark.png" alt="OngoingAI logo">
+      OngoingAI
+    </div>
+    <div class="links"><a>Product</a><a>Changelog</a><a>Docs</a><a>Pricing</a></div>
+    <a class="cta">Try it →</a>
+  </nav>
+  <div class="foot">
+    <span class="big">Keep building.</span>
+    <div class="r"><span>© 2026 OngoingAI</span><span>·</span><span>Status</span><span>·</span><span>Privacy</span></div>
+  </div>
+</div>
+</body></html>
