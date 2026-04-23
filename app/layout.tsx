@@ -4,8 +4,6 @@ import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import './globals.css';
 
-//test
-
 const instrumentSerif = Instrument_Serif({
   subsets: ['latin'],
   weight: '400',
@@ -15,9 +13,9 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: 'OngoingAI — Stay in the vibe',
+  title: 'OngoingAI — Build with AI, every day',
   description:
-    'OngoingAI is the AI pair for developers who ship by feel — without the 2 a.m. rollbacks. Every change is a branch. Every branch is a checkpoint.',
+    'A community for people who build with AI daily — sharing real work, learning in public, and pulling each other forward.',
   icons: {
     icon: '/logo-mark.png',
   },
