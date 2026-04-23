@@ -1,3 +1,7 @@
+const DISCORD_URL = 'https://discord.gg/HQKMcrVrxj';
+const YOUTUBE_URL =
+  'https://www.youtube.com/channel/UCusiu-uFL2PAtdGIaGg7PZw?sub_confirmation=1';
+
 export function CTABanner() {
   return (
     <section style={{ padding: '32px' }}>
@@ -42,8 +46,8 @@ export function CTABanner() {
               maxWidth: 480,
             }}
           >
-            Free while in beta. Bring your own model or use ours. Come meet
-            the vibe coders already shipping on it.
+            Free to join. Bring whatever tools you&rsquo;re already using.
+            Come meet the builders showing up every day.
           </p>
         </div>
         <div
@@ -51,10 +55,14 @@ export function CTABanner() {
             display: 'flex',
             gap: 12,
             flexDirection: 'column',
-            alignItems: 'flex-start',
+            alignItems: 'stretch',
+            minWidth: 240,
           }}
         >
-          <button
+          <a
+            href={DISCORD_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               background: 'var(--ink-900)',
               color: 'var(--ink-50)',
@@ -64,20 +72,44 @@ export function CTABanner() {
               fontFamily: 'var(--font-sans)',
               fontSize: 16,
               fontWeight: 600,
-              cursor: 'pointer',
+              textDecoration: 'none',
+              textAlign: 'center',
             }}
           >
-            Install the CLI →
-          </button>
-          <span
+            Join the Discord →
+          </a>
+          <a
+            href={YOUTUBE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              background: 'transparent',
+              color: 'var(--ink-900)',
+              border: '1px solid var(--ink-900)',
+              padding: '15px 24px',
+              borderRadius: 10,
+              fontFamily: 'var(--font-sans)',
+              fontSize: 15,
+              fontWeight: 600,
+              textDecoration: 'none',
+              textAlign: 'center',
+            }}
+          >
+            Subscribe on YouTube
+          </a>
+          <a
+            href="/newsletter"
             style={{
               fontFamily: 'var(--font-mono)',
               fontSize: 12,
               color: 'var(--ink-800)',
+              textAlign: 'center',
+              textDecoration: 'underline',
+              textUnderlineOffset: 3,
             }}
           >
-            curl -fsSL ongoing.ai/i | sh
-          </span>
+            or get the newsletter →
+          </a>
         </div>
       </div>
     </section>

@@ -1,3 +1,5 @@
+const DISCORD_URL = 'https://discord.gg/HQKMcrVrxj';
+
 export function Hero() {
   return (
     <section
@@ -33,7 +35,7 @@ export function Hero() {
             background: 'var(--orange-500)',
           }}
         />
-        A home for vibe coders
+        New community · Free to join
       </div>
       <h1
         style={{
@@ -46,8 +48,8 @@ export function Hero() {
           maxWidth: 980,
         }}
       >
-        Anyone can <em style={{ fontStyle: 'italic' }}>build</em> now.<br />
-        We make sure it sticks.
+        Build with AI.<br />
+        <em style={{ fontStyle: 'italic' }}>Every</em> day.
       </h1>
       <p
         style={{
@@ -60,10 +62,10 @@ export function Hero() {
           textWrap: 'pretty',
         }}
       >
-        Vibe coding is the future — and it&apos;s already here. OngoingAI helps
-        a new generation of builders turn ideas into real software, without
-        years of training or a team behind them. Every change is a branch.
-        Every branch is a checkpoint. Try anything, lose nothing.
+        OngoingAI is a community for people who create with AI daily —
+        sharing real work, learning in public, and pulling each other
+        forward. No gatekeeping, no guru act. Just builders helping
+        builders ship.
       </p>
       <div
         style={{
@@ -74,7 +76,10 @@ export function Hero() {
           flexWrap: 'wrap',
         }}
       >
-        <button
+        <a
+          href={DISCORD_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           style={{
             background: 'var(--orange-400)',
             color: 'var(--fg-on-accent)',
@@ -84,12 +89,15 @@ export function Hero() {
             fontFamily: 'var(--font-sans)',
             fontSize: 15,
             fontWeight: 600,
-            cursor: 'pointer',
+            textDecoration: 'none',
+            display: 'inline-flex',
+            alignItems: 'center',
           }}
         >
-          Start building →
-        </button>
-        <button
+          Join the Discord →
+        </a>
+        <a
+          href="/newsletter"
           style={{
             background: 'transparent',
             color: 'var(--fg-1)',
@@ -99,11 +107,13 @@ export function Hero() {
             fontFamily: 'var(--font-sans)',
             fontSize: 15,
             fontWeight: 500,
-            cursor: 'pointer',
+            textDecoration: 'none',
+            display: 'inline-flex',
+            alignItems: 'center',
           }}
         >
-          Join the community
-        </button>
+          Get the newsletter
+        </a>
         <span
           style={{
             fontFamily: 'var(--font-mono)',
@@ -113,7 +123,7 @@ export function Hero() {
             letterSpacing: '0.04em',
           }}
         >
-          ⌘K · install in 30s
+          We stream daily on YouTube
         </span>
       </div>
     </section>

@@ -1,61 +1,72 @@
-import {
-  GitBranch,
-  RotateCcw,
-  ShieldCheck,
-  Sparkles,
-  Terminal,
-  Users,
-  type LucideIcon,
-} from 'lucide-react';
+import { CalendarCheck, Wrench, Users, type LucideIcon } from 'lucide-react';
 
 type Tone = 'paper' | 'hero' | 'ink';
 
-type FeatureCardProps = {
+type UniqueCardProps = {
   icon: LucideIcon;
+  number: string;
   title: string;
   body: string;
   tone?: Tone;
 };
 
-function FeatureCard({ icon: Icon, title, body, tone = 'paper' }: FeatureCardProps) {
-  const toneStyles: Record<Tone, React.CSSProperties> =
-    {
-      paper: {
-        background: 'var(--bg-elevated)',
-        color: 'var(--fg-1)',
-        border: '1px solid var(--border-1)',
-      },
-      hero: {
-        background: 'var(--orange-400)',
-        color: 'var(--fg-on-accent)',
-        border: '1px solid var(--ink-900)',
-      },
-      ink: {
-        background: 'var(--ink-900)',
-        color: 'var(--ink-50)',
-        border: '1px solid var(--ink-900)',
-      },
-    };
+function UniqueCard({ icon: Icon, number, title, body, tone = 'paper' }: UniqueCardProps) {
+  const toneStyles: Record<Tone, React.CSSProperties> = {
+    paper: {
+      background: 'var(--bg-elevated)',
+      color: 'var(--fg-1)',
+      border: '1px solid var(--border-1)',
+    },
+    hero: {
+      background: 'var(--orange-400)',
+      color: 'var(--fg-on-accent)',
+      border: '1px solid var(--ink-900)',
+    },
+    ink: {
+      background: 'var(--ink-900)',
+      color: 'var(--ink-50)',
+      border: '1px solid var(--ink-900)',
+    },
+  };
 
   return (
     <div
       style={{
         ...toneStyles[tone],
         borderRadius: 14,
-        padding: '24px 24px 28px',
+        padding: '28px 28px 32px',
         display: 'flex',
         flexDirection: 'column',
-        gap: 12,
+        gap: 14,
       }}
     >
-      <Icon size={24} strokeWidth={1.5} color="currentColor" />
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}
+      >
+        <Icon size={26} strokeWidth={1.5} color="currentColor" />
+        <span
+          style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: 11,
+            letterSpacing: '0.12em',
+            opacity: 0.65,
+          }}
+        >
+          {number}
+        </span>
+      </div>
       <h3
         style={{
           margin: '4px 0 0',
-          fontFamily: 'var(--font-sans)',
-          fontSize: 19,
-          fontWeight: 600,
-          letterSpacing: '-0.01em',
+          fontFamily: 'var(--font-display)',
+          fontSize: 24,
+          fontWeight: 500,
+          letterSpacing: '-0.02em',
+          lineHeight: 1.15,
           color: 'inherit',
         }}
       >
@@ -65,10 +76,10 @@ function FeatureCard({ icon: Icon, title, body, tone = 'paper' }: FeatureCardPro
         style={{
           margin: 0,
           fontFamily: 'var(--font-sans)',
-          fontSize: 14,
+          fontSize: 15,
           lineHeight: 1.55,
           color: tone === 'paper' ? 'var(--fg-2)' : 'inherit',
-          opacity: tone === 'paper' ? 1 : 0.85,
+          opacity: tone === 'paper' ? 1 : 0.88,
           textWrap: 'pretty',
         }}
       >
@@ -81,7 +92,7 @@ function FeatureCard({ icon: Icon, title, body, tone = 'paper' }: FeatureCardPro
 export function Features() {
   return (
     <section
-      id="product"
+      id="community"
       style={{ padding: '80px 32px', maxWidth: 1200, margin: '0 auto' }}
     >
       <span
@@ -94,7 +105,7 @@ export function Features() {
           color: 'var(--orange-500)',
         }}
       >
-        Built for builders
+        What makes this different
       </span>
       <h2
         style={{
@@ -104,10 +115,10 @@ export function Features() {
           letterSpacing: '-0.03em',
           margin: '12px 0 48px',
           color: 'var(--fg-1)',
-          maxWidth: 780,
+          maxWidth: 820,
         }}
       >
-        A safety net for <em style={{ fontStyle: 'italic' }}>bold ideas</em>.
+        It&rsquo;s not a hub. It&rsquo;s a <em style={{ fontStyle: 'italic' }}>habit</em>.
       </h2>
       <div
         style={{
@@ -116,36 +127,24 @@ export function Features() {
           gap: 16,
         }}
       >
-        <FeatureCard
-          icon={GitBranch}
-          title="Checkpoints"
-          body="Every change is a branch. Try five ideas, keep the one that works, throw away the rest with zero regret."
+        <UniqueCard
+          icon={CalendarCheck}
+          number="01"
+          title="A daily builder environment"
+          body="This isn&rsquo;t a content feed you scroll. It&rsquo;s a rhythm that puts you in a seat and helps you ship something — today, tomorrow, the day after."
         />
-        <FeatureCard
-          icon={RotateCcw}
-          title="Time travel"
-          body="Scrub through your project like a video. See what the agent did, where, and why — no git degree required."
+        <UniqueCard
+          icon={Wrench}
+          number="02"
+          title="Tool-agnostic, always current"
+          body="No loyalty to any one tool or platform. We adopt what&rsquo;s working this week and teach it while it&rsquo;s still fresh."
           tone="hero"
         />
-        <FeatureCard
-          icon={ShieldCheck}
-          title="Guardrails"
-          body="Tests run on every checkpoint. Secrets stay out of prompts. You stay in flow, not firefighting."
-        />
-        <FeatureCard
-          icon={Sparkles}
-          title="Vibe-first prompts"
-          body="Describe the feel. The agent handles the plumbing. If it&rsquo;s not right, just say so — in plain language."
-        />
-        <FeatureCard
-          icon={Terminal}
-          title="CLI that stays put"
-          body="One install, zero config. Works alongside whatever editor, terminal, or workflow you already love."
-        />
-        <FeatureCard
+        <UniqueCard
           icon={Users}
-          title="A real community"
-          body="Thousands of vibe coders swapping prompts, patterns, and first-launch wins. You&rsquo;re not building alone."
+          number="03"
+          title="Build in public, grow faster"
+          body="Share real work. Get real feedback. Improve faster because you&rsquo;re surrounded by people doing the same thing."
           tone="ink"
         />
       </div>

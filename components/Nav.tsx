@@ -5,20 +5,18 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 
-type NavProps = {
-  onCta?: () => void;
-};
+const DISCORD_URL = 'https://discord.gg/HQKMcrVrxj';
+const YOUTUBE_URL =
+  'https://www.youtube.com/channel/UCusiu-uFL2PAtdGIaGg7PZw?sub_confirmation=1';
 
 const NAV_LINKS = [
-  { href: '#product', label: 'Product' },
-  { href: '#how', label: 'How it works' },
-  { href: '#changelog', label: 'Changelog' },
-  { href: '#docs', label: 'Docs' },
-  { href: '#pricing', label: 'Pricing' },
-  { href: '/newsletter', label: 'Newsletter' },
+  { href: '/#values', label: 'Values', external: false },
+  { href: '/#community', label: 'Community', external: false },
+  { href: '/live', label: 'Live', external: false },
+  { href: '/newsletter', label: 'Newsletter', external: false },
 ] as const;
 
-export function Nav({ onCta }: NavProps) {
+export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -37,11 +35,6 @@ export function Nav({ onCta }: NavProps) {
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [menuOpen]);
-
-  const handleCta = () => {
-    setMenuOpen(false);
-    onCta?.();
-  };
 
   return (
     <nav
@@ -106,6 +99,9 @@ export function Nav({ onCta }: NavProps) {
             <a
               key={link.href}
               href={link.href}
+              {...(link.external
+                ? { target: '_blank', rel: 'noopener noreferrer' }
+                : {})}
               style={{ color: 'inherit', textDecoration: 'none' }}
             >
               {link.label}
@@ -118,18 +114,9 @@ export function Nav({ onCta }: NavProps) {
           style={{ gap: 10, alignItems: 'center' }}
         >
           <a
-            href="#signin"
-            style={{
-              fontSize: 14,
-              fontWeight: 500,
-              color: 'var(--fg-2)',
-              textDecoration: 'none',
-            }}
-          >
-            Sign in
-          </a>
-          <button
-            onClick={handleCta}
+            href={DISCORD_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               background: 'var(--ink-900)',
               color: 'var(--ink-50)',
@@ -139,11 +126,13 @@ export function Nav({ onCta }: NavProps) {
               fontFamily: 'var(--font-sans)',
               fontSize: 13,
               fontWeight: 500,
-              cursor: 'pointer',
+              textDecoration: 'none',
+              display: 'inline-flex',
+              alignItems: 'center',
             }}
           >
-            Try it →
-          </button>
+            Join Discord →
+          </a>
         </div>
 
         <button
@@ -170,83 +159,74 @@ export function Nav({ onCta }: NavProps) {
         </button>
       </div>
 
-      <div
-        id="mobile-menu"
-        className="nav-mobile-panel"
-        data-open={menuOpen}
-        aria-hidden={!menuOpen}
-        style={{
-          background: 'var(--bg)',
-          borderTop: '1px solid var(--border-1)',
-          padding: '16px 32px 24px',
-        }}
-      >
-        <ul
+      {menuOpen && (
+        <div
+          id="mobile-menu"
+          className="nav-mobile-panel"
+          data-open={menuOpen}
           style={{
-            listStyle: 'none',
-            padding: 0,
-            margin: 0,
-            display: 'flex',
-            flexDirection: 'column',
+            background: 'var(--bg)',
+            borderTop: '1px solid var(--border-1)',
+            padding: '16px 32px 24px',
           }}
         >
-          {NAV_LINKS.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                onClick={() => setMenuOpen(false)}
-                style={{
-                  display: 'block',
-                  padding: '14px 0',
-                  fontFamily: 'var(--font-sans)',
-                  fontSize: 16,
-                  fontWeight: 500,
-                  color: 'var(--fg-1)',
-                  textDecoration: 'none',
-                  borderBottom: '1px solid var(--border-1)',
-                }}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-          <li>
-            <a
-              href="#signin"
-              onClick={() => setMenuOpen(false)}
-              style={{
-                display: 'block',
-                padding: '14px 0',
-                fontFamily: 'var(--font-sans)',
-                fontSize: 16,
-                fontWeight: 500,
-                color: 'var(--fg-1)',
-                textDecoration: 'none',
-              }}
-            >
-              Sign in
-            </a>
-          </li>
-        </ul>
-        <button
-          onClick={handleCta}
-          style={{
-            marginTop: 16,
-            width: '100%',
-            background: 'var(--ink-900)',
-            color: 'var(--ink-50)',
-            padding: '14px 20px',
-            borderRadius: 10,
-            border: 'none',
-            fontFamily: 'var(--font-sans)',
-            fontSize: 15,
-            fontWeight: 600,
-            cursor: 'pointer',
-          }}
-        >
-          Try it →
-        </button>
-      </div>
+          <ul
+            style={{
+              listStyle: 'none',
+              padding: 0,
+              margin: 0,
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
+            {NAV_LINKS.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  {...(link.external
+                    ? { target: '_blank', rel: 'noopener noreferrer' }
+                    : {})}
+                  style={{
+                    display: 'block',
+                    padding: '14px 0',
+                    fontFamily: 'var(--font-sans)',
+                    fontSize: 16,
+                    fontWeight: 500,
+                    color: 'var(--fg-1)',
+                    textDecoration: 'none',
+                    borderBottom: '1px solid var(--border-1)',
+                  }}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a
+            href={DISCORD_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMenuOpen(false)}
+            style={{
+              display: 'block',
+              textAlign: 'center',
+              marginTop: 16,
+              background: 'var(--ink-900)',
+              color: 'var(--ink-50)',
+              padding: '14px 20px',
+              borderRadius: 10,
+              border: 'none',
+              fontFamily: 'var(--font-sans)',
+              fontSize: 15,
+              fontWeight: 600,
+              textDecoration: 'none',
+            }}
+          >
+            Join Discord →
+          </a>
+        </div>
+      )}
 
     </nav>
   );

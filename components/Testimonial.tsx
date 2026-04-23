@@ -21,10 +21,10 @@ export function Testimonial() {
             textWrap: 'pretty',
           }}
         >
-          &ldquo;I&apos;d never written a line of code before this year. I got
-          four prototypes out in a weekend. Three were trash. The one that
-          shipped, shipped — and I still have the other three sitting in
-          branches. That&apos;s the whole thing.&rdquo;
+          &ldquo;Most people get curious about AI and then stall. OngoingAI
+          is for the ones who don&rsquo;t — the ones who show up every
+          day, share what&rsquo;s working, and pull the next person
+          forward. That&rsquo;s the whole thing.&rdquo;
         </p>
         <footer
           style={{
@@ -48,7 +48,7 @@ export function Testimonial() {
               color: 'var(--orange-800)',
             }}
           >
-            R
+            N
           </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <span
@@ -59,7 +59,7 @@ export function Testimonial() {
                 color: 'var(--fg-1)',
               }}
             >
-              Ren Takahashi
+              Nathan Pope
             </span>
             <span
               style={{
@@ -70,7 +70,7 @@ export function Testimonial() {
                 textTransform: 'uppercase',
               }}
             >
-              Vibe coder · Kindling
+              Founder · OngoingAI
             </span>
           </div>
         </footer>

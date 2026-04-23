@@ -1,7 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-type FooterItem = { label: string; href: string };
+const DISCORD_URL = 'https://discord.gg/HQKMcrVrxj';
+const YOUTUBE_URL =
+  'https://www.youtube.com/channel/UCusiu-uFL2PAtdGIaGg7PZw?sub_confirmation=1';
+const X_URL = 'https://x.com/ongoingai';
+
+type FooterItem = { label: string; href: string; external?: boolean };
 
 type FooterColProps = {
   heading: string;
@@ -27,6 +32,9 @@ function FooterCol({ heading, items }: FooterColProps) {
         <a
           key={item.label}
           href={item.href}
+          {...(item.external
+            ? { target: '_blank', rel: 'noopener noreferrer' }
+            : {})}
           style={{
             color: 'var(--ink-100)',
             fontSize: 14,
@@ -54,7 +62,7 @@ export function Footer() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
             gap: 40,
             marginBottom: 64,
           }}
@@ -86,43 +94,36 @@ export function Footer() {
             <p
               style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: 32,
-                lineHeight: 1.1,
+                fontSize: 28,
+                lineHeight: 1.15,
                 letterSpacing: '-0.02em',
                 margin: '24px 0 0',
                 color: 'var(--ink-50)',
                 maxWidth: 360,
               }}
             >
-              Keep <em style={{ fontStyle: 'italic' }}>vibing</em>. Keep building.
+              Build <em style={{ fontStyle: 'italic' }}>every</em> day. Together.
             </p>
           </div>
           <FooterCol
-            heading="Product"
+            heading="Community"
             items={[
-              { label: 'Overview', href: '#' },
-              { label: 'Checkpoints', href: '#' },
-              { label: 'Time travel', href: '#' },
-              { label: 'Pricing', href: '#pricing' },
-            ]}
-          />
-          <FooterCol
-            heading="Resources"
-            items={[
+              { label: 'Discord', href: DISCORD_URL, external: true },
               { label: 'Newsletter', href: '/newsletter' },
-              { label: 'Docs', href: '#' },
-              { label: 'Changelog', href: '#' },
-              { label: 'Blog', href: '#' },
-              { label: 'Guides', href: '#' },
             ]}
           />
           <FooterCol
-            heading="Company"
+            heading="Socials"
             items={[
-              { label: 'About', href: '#' },
-              { label: 'Careers', href: '#' },
-              { label: 'Status', href: '#' },
-              { label: 'Contact', href: '#' },
+              { label: 'YouTube', href: YOUTUBE_URL, external: true },
+              { label: 'X / Twitter', href: X_URL, external: true },
+            ]}
+          />
+          <FooterCol
+            heading="On this site"
+            items={[
+              { label: 'Our values', href: '/#values' },
+              { label: 'What makes us different', href: '/#community' },
             ]}
           />
         </div>
@@ -141,18 +142,7 @@ export function Footer() {
             gap: 16,
           }}
         >
-          <span>© 2026 OngoingAI · Built by and for vibe coders</span>
-          <div style={{ display: 'flex', gap: 20 }}>
-            <a href="#" style={{ color: 'inherit', textDecoration: 'none' }}>
-              Privacy
-            </a>
-            <a href="#" style={{ color: 'inherit', textDecoration: 'none' }}>
-              Terms
-            </a>
-            <a href="#" style={{ color: 'inherit', textDecoration: 'none' }}>
-              Security
-            </a>
-          </div>
+          <span>© 2026 OngoingAI · A community of daily builders</span>
         </div>
       </div>
     </footer>
