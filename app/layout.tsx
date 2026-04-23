@@ -13,6 +13,7 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://ongoing.ai'),
   title: 'OngoingAI — Build with AI, every day',
   description:
     'A community for people who build with AI daily — sharing real work, learning in public, and pulling each other forward.',

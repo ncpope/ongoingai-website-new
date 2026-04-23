@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: 'Subscribe — OngoingAI',
   description:
     "Get the OngoingAI newsletter. Product updates, tutorials, changelog, community — pick what you want, on your cadence.",
+  alternates: { canonical: '/newsletter' },
 };
 
 export default function NewsletterPage() {

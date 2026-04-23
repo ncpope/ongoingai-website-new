@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: 'Live — OngoingAI',
   description:
     'Watch OngoingAI build live on YouTube. Daily streams of real work, real tools, and real feedback from the community.',
+  alternates: { canonical: '/live' },
 };
 
 export default function LivePage() {
