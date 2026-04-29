@@ -14,9 +14,9 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ongoing.ai'),
-  title: 'OngoingAI — Build with AI, every day',
+  title: 'OngoingAI — Be the answer ChatGPT cites',
   description:
-    'A community for people who build with AI daily — sharing real work, learning in public, and pulling each other forward.',
+    'OngoingAI scans your site, surfaces the gaps blocking LLM citation, and gives you the exact pages to write next — grounded in your own ICP, not generic keywords.',
   icons: {
     icon: '/logo-mark.png',
   },

@@ -5,14 +5,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 
-const DISCORD_URL = 'https://discord.gg/HQKMcrVrxj';
-const YOUTUBE_URL =
-  'https://www.youtube.com/channel/UCusiu-uFL2PAtdGIaGg7PZw?sub_confirmation=1';
-
 const NAV_LINKS = [
-  { href: '/#values', label: 'Values', external: false },
-  { href: '/#community', label: 'Community', external: false },
-  { href: '/live', label: 'Live', external: false },
+  { href: '/#how-it-works', label: 'How it works', external: false },
+  // { href: '/blog', label: 'Blog', external: false },
   { href: '/newsletter', label: 'Newsletter', external: false },
 ] as const;
 
@@ -114,9 +109,7 @@ export function Nav() {
           style={{ gap: 10, alignItems: 'center' }}
         >
           <a
-            href={DISCORD_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/#waitlist"
             style={{
               background: 'var(--ink-900)',
               color: 'var(--ink-50)',
@@ -131,7 +124,7 @@ export function Nav() {
               alignItems: 'center',
             }}
           >
-            Join Discord →
+            Join waitlist →
           </a>
         </div>
 
@@ -204,9 +197,7 @@ export function Nav() {
             ))}
           </ul>
           <a
-            href={DISCORD_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/#waitlist"
             onClick={() => setMenuOpen(false)}
             style={{
               display: 'block',
@@ -223,7 +214,7 @@ export function Nav() {
               textDecoration: 'none',
             }}
           >
-            Join Discord →
+            Join waitlist →
           </a>
         </div>
       )}

@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-const DISCORD_URL = 'https://discord.gg/HQKMcrVrxj';
 const YOUTUBE_URL =
   'https://www.youtube.com/channel/UCusiu-uFL2PAtdGIaGg7PZw?sub_confirmation=1';
 const X_URL = 'https://x.com/ongoingai';
@@ -102,13 +101,20 @@ export function Footer() {
                 maxWidth: 360,
               }}
             >
-              Build <em style={{ fontStyle: 'italic' }}>every</em> day. Together.
+              Be the answer <em style={{ fontStyle: 'italic' }}>LLMs</em> cite.
             </p>
           </div>
           <FooterCol
-            heading="Community"
+            heading="Product"
             items={[
-              { label: 'Discord', href: DISCORD_URL, external: true },
+              { label: 'How it works', href: '/#how-it-works' },
+              { label: 'Join waitlist', href: '/#waitlist' },
+              // { label: 'Blog', href: '/blog' },
+            ]}
+          />
+          <FooterCol
+            heading="Subscribe"
+            items={[
               { label: 'Newsletter', href: '/newsletter' },
             ]}
           />
@@ -117,13 +123,6 @@ export function Footer() {
             items={[
               { label: 'YouTube', href: YOUTUBE_URL, external: true },
               { label: 'X / Twitter', href: X_URL, external: true },
-            ]}
-          />
-          <FooterCol
-            heading="On this site"
-            items={[
-              { label: 'Our values', href: '/#values' },
-              { label: 'What makes us different', href: '/#community' },
             ]}
           />
         </div>
@@ -142,7 +141,7 @@ export function Footer() {
             gap: 16,
           }}
         >
-          <span>© 2026 OngoingAI · A community of daily builders</span>
+          <span>© 2026 OngoingAI · Generative Engine Optimization</span>
         </div>
       </div>
     </footer>

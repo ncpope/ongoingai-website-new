@@ -1,4 +1,4 @@
-import { CalendarCheck, Wrench, Users, type LucideIcon } from 'lucide-react';
+import { Eye, ListChecks, FileText, type LucideIcon } from 'lucide-react';
 
 type Tone = 'paper' | 'hero' | 'ink';
 
@@ -92,7 +92,7 @@ function UniqueCard({ icon: Icon, number, title, body, tone = 'paper' }: UniqueC
 export function Features() {
   return (
     <section
-      id="community"
+      id="how-it-works"
       style={{ padding: '80px 32px', maxWidth: 1200, margin: '0 auto' }}
     >
       <span
@@ -105,7 +105,7 @@ export function Features() {
           color: 'var(--orange-500)',
         }}
       >
-        What makes this different
+        How it works
       </span>
       <h2
         style={{
@@ -118,7 +118,7 @@ export function Features() {
           maxWidth: 820,
         }}
       >
-        It&rsquo;s not a hub. It&rsquo;s a <em style={{ fontStyle: 'italic' }}>habit</em>.
+        Audit, plan, <em style={{ fontStyle: 'italic' }}>publish</em>.
       </h2>
       <div
         style={{
@@ -128,23 +128,23 @@ export function Features() {
         }}
       >
         <UniqueCard
-          icon={CalendarCheck}
+          icon={Eye}
           number="01"
-          title="A daily builder environment"
-          body="This isn&rsquo;t a content feed you scroll. It&rsquo;s a rhythm that puts you in a seat and helps you ship something — today, tomorrow, the day after."
+          title="See what LLMs see"
+          body="Free site scan surfaces every page&rsquo;s citability — title shape, answer structure, missing alt text, OG tags, thin content, intent cannibalization. The audit you&rsquo;d do by hand if you had a week."
         />
         <UniqueCard
-          icon={Wrench}
+          icon={ListChecks}
           number="02"
-          title="Tool-agnostic, always current"
-          body="No loyalty to any one tool or platform. We adopt what&rsquo;s working this week and teach it while it&rsquo;s still fresh."
+          title="Plans, not problems"
+          body="A prioritized list of pages to write — with the literal Q&A blocks LLMs lift, the structural rules that make them citable, and the evidence to gather. You leave knowing exactly what to build this week."
           tone="hero"
         />
         <UniqueCard
-          icon={Users}
+          icon={FileText}
           number="03"
-          title="Build in public, grow faster"
-          body="Share real work. Get real feedback. Improve faster because you&rsquo;re surrounded by people doing the same thing."
+          title="Grounded in your thinking"
+          body="Upload your ICP, positioning, and brand docs. Every suggestion ties back to a doc by name. No keyword lists, no generic SaaS copy — just what your audience needs to hear from you."
           tone="ink"
         />
       </div>

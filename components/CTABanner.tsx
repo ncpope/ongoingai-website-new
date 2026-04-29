@@ -1,7 +1,3 @@
-const DISCORD_URL = 'https://discord.gg/HQKMcrVrxj';
-const YOUTUBE_URL =
-  'https://www.youtube.com/channel/UCusiu-uFL2PAtdGIaGg7PZw?sub_confirmation=1';
-
 export function CTABanner() {
   return (
     <section style={{ padding: '32px' }}>
@@ -32,9 +28,9 @@ export function CTABanner() {
               textWrap: 'pretty',
             }}
           >
-            Build the thing.
+            The new SEO playbook.
             <br />
-            Join the builders.
+            Straight to your inbox.
           </h2>
           <p
             style={{
@@ -46,8 +42,9 @@ export function CTABanner() {
               maxWidth: 480,
             }}
           >
-            Free to join. Bring whatever tools you&rsquo;re already using.
-            Come meet the builders showing up every day.
+            Practical breakdowns on Generative Engine Optimization — what
+            changed, what to publish, and how to make your site the source
+            LLMs cite.
           </p>
         </div>
         <div
@@ -60,9 +57,7 @@ export function CTABanner() {
           }}
         >
           <a
-            href={DISCORD_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/newsletter"
             style={{
               background: 'var(--ink-900)',
               color: 'var(--ink-50)',
@@ -76,12 +71,10 @@ export function CTABanner() {
               textAlign: 'center',
             }}
           >
-            Join the Discord →
+            Get the newsletter →
           </a>
           <a
-            href={YOUTUBE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/#waitlist"
             style={{
               background: 'transparent',
               color: 'var(--ink-900)',
@@ -95,20 +88,7 @@ export function CTABanner() {
               textAlign: 'center',
             }}
           >
-            Subscribe on YouTube
-          </a>
-          <a
-            href="/newsletter"
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: 12,
-              color: 'var(--ink-800)',
-              textAlign: 'center',
-              textDecoration: 'underline',
-              textUnderlineOffset: 3,
-            }}
-          >
-            or get the newsletter →
+            Join the waitlist
           </a>
         </div>
       </div>

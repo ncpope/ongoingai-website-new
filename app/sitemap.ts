@@ -13,12 +13,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${BASE_URL}/live`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
       url: `${BASE_URL}/newsletter`,
       lastModified,
       changeFrequency: 'monthly',
