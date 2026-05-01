@@ -19,7 +19,7 @@ export const whatIsCitability: Answer = {
   expansion: [
     'Most content is not citable because it is written to rank for keywords, not to answer a specific question.',
     'Citability is the visibility metric for the AI-search era. Where SEO measures ranking in a list of links, citability measures whether your page is chosen as the source behind a single synthesized answer.',
-    'Users no longer scan ten links and pick one. They read one answer and move on. If your page is not the source behind that answer, you are not part of that conversation — regardless of what your Google rank says.',
+    'Users no longer scan ten links. They read one answer and move on. If your page is not the source behind that answer, you are not part of that conversation — regardless of what your Google rank says.',
   ],
   contrast:
     'Citability is not about ranking higher in search results. It is about being chosen as the source behind a generated answer.',
@@ -45,7 +45,7 @@ export const whatIsCitability: Answer = {
     {
       question: 'How is citability different from SEO?',
       answer:
-        'SEO optimizes for ranking in a list of links. Citability optimizes for being chosen as the source behind a generated answer. SEO targets crawlers; citability targets the moment an AI system picks what to quote.',
+        'SEO optimizes for ranking in a list of links. Citability optimizes for being chosen as the source behind a generated answer. SEO targets crawlers; citability targets the moment an AI system selects a source for its answer.',
     },
     {
       question: 'How do I know if my content is citable?',
