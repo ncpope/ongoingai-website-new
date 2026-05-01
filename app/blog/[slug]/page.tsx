@@ -199,7 +199,7 @@ function stripDuplicateLeadingHeading(
   body: unknown,
   title: string,
 ): unknown[] {
-  if (!Array.isArray(body) || body.length === 0) return body ?? [];
+  if (!Array.isArray(body) || body.length === 0) return [];
   const first = body[0] as
     | {
         _type?: string;
