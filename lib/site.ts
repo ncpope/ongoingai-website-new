@@ -7,7 +7,10 @@ export const ORGANIZATION = {
   description:
     'OngoingAI helps founders get cited by AI search engines like ChatGPT, Claude, and Perplexity by engineering content for citability, not ranking.',
   sameAs: [
-    // TODO: add real social URLs (LinkedIn, X/Twitter, etc.) — required for strong E-E-A-T signal.
+    'https://x.com/ongoingai',
+    'https://www.facebook.com/OngoingAI',
+    'https://github.com/ongoingai',
+    'https://www.youtube.com/channel/UCusiu-uFL2PAtdGIaGg7PZw',
   ],
 } as const;
 
@@ -26,7 +29,9 @@ export const NATHAN: PersonRecord = {
   role: 'Founder, OngoingAI',
   bio: 'Founder of OngoingAI. Writes about generative engine optimization, citability, and how content actually gets used by ChatGPT, Claude, Perplexity, and Gemini.',
   sameAs: [
-    // TODO: add real LinkedIn / X / personal site URLs. Required for citability — LLMs weight named, verifiable authors.
+    'https://x.com/nathancpope',
+    'https://www.linkedin.com/in/nathan-pope-5559152ba/',
+    'https://github.com/ncpope',
   ],
 };
 

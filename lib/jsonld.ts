@@ -107,6 +107,7 @@ export function blogPostingJsonLd(args: {
   title: string;
   slug: string;
   description?: string;
+  image?: string;
   datePublished: string;
   dateModified: string;
   authorId?: string;
@@ -117,6 +118,7 @@ export function blogPostingJsonLd(args: {
     '@type': 'BlogPosting',
     headline: args.title,
     ...(args.description ? { description: args.description } : {}),
+    ...(args.image ? { image: args.image } : {}),
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
     url,
     datePublished: args.datePublished,
@@ -124,6 +126,7 @@ export function blogPostingJsonLd(args: {
     author: args.authorId ? personRef(args.authorId) : organizationRef(),
     publisher: organizationRef(),
     inLanguage: 'en',
+    isAccessibleForFree: true,
   };
 }
 

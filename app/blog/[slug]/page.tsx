@@ -1,15 +1,38 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { PortableText, type PortableTextComponents } from '@portabletext/react';
+import {
+  PortableText,
+  type PortableTextBlockComponent,
+  type PortableTextComponents,
+} from '@portabletext/react';
 import { Nav } from '@/components/Nav';
 import { Footer } from '@/components/Footer';
 import { getBlogPost } from '@/lib/sanity';
 import { getAnswersForPost } from '@/lib/content/answers';
+import { NATHAN, PEOPLE, SITE_URL, absoluteUrl } from '@/lib/site';
+import {
+  blogPostingJsonLd,
+  breadcrumbJsonLd,
+  renderJsonLd,
+} from '@/lib/jsonld';
+import {
+  blockPlainText,
+  excerptFromBody,
+  slugifyHeading,
+} from '@/lib/portable-text-utils';
 
 export const revalidate = 60;
 
 type Params = { slug: string };
+
+function ogImageUrl(title: string): string {
+  const params = new URLSearchParams({
+    title,
+    eyebrow: 'OngoingAI · Blog',
+  });
+  return `${SITE_URL}/og?${params.toString()}`;
+}
 
 export async function generateMetadata({
   params,
@@ -19,72 +42,97 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = await getBlogPost(slug);
   if (!post) return { title: 'Post not found — OngoingAI' };
+
+  const description =
+    post.description?.trim() || excerptFromBody(post.body) || undefined;
+  const url = `/blog/${post.slug}`;
+  const ogImage = ogImageUrl(post.title);
+
   return {
     title: `${post.title} — OngoingAI`,
-    alternates: { canonical: `/blog/${post.slug}` },
+    ...(description ? { description } : {}),
+    alternates: { canonical: url },
+    openGraph: {
+      type: 'article',
+      title: post.title,
+      ...(description ? { description } : {}),
+      url,
+      siteName: 'OngoingAI',
+      publishedTime: post.publishedAt,
+      modifiedTime: post.updatedAt,
+      authors: [NATHAN.name],
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      ...(description ? { description } : {}),
+      images: [ogImage],
+    },
+    authors: [{ name: NATHAN.name }],
   };
+}
+
+function buildHeadingComponent(level: 'h1' | 'h2' | 'h3' | 'h4') {
+  const margin =
+    level === 'h1'
+      ? '64px 0 16px'
+      : level === 'h2'
+        ? '48px 0 16px'
+        : level === 'h3'
+          ? '32px 0 12px'
+          : '24px 0 8px';
+  const fontFamily =
+    level === 'h1' || level === 'h2'
+      ? 'var(--font-display)'
+      : 'var(--font-sans)';
+  const fontWeight = level === 'h1' || level === 'h2' ? 400 : 600;
+  const fontSize = `var(--t-${level})`;
+  const letterSpacing =
+    level === 'h1' || level === 'h2'
+      ? 'var(--tr-tight)'
+      : level === 'h3'
+        ? 'var(--tr-snug)'
+        : undefined;
+
+  const Heading: PortableTextBlockComponent = ({ children, value }) => {
+    const Tag = level;
+    const text = blockPlainText(value);
+    const id = text ? slugifyHeading(text) : undefined;
+    return (
+      <Tag
+        id={id}
+        style={{
+          fontFamily,
+          fontWeight,
+          fontSize,
+          lineHeight: 'var(--lh-heading)',
+          ...(letterSpacing ? { letterSpacing } : {}),
+          color: 'var(--fg-1)',
+          margin,
+          scrollMarginTop: 80,
+        }}
+      >
+        {children}
+      </Tag>
+    );
+  };
+  return Heading;
 }
 
 const components: PortableTextComponents = {
   block: {
-    h1: ({ children }) => (
-      <h1
-        style={{
-          fontFamily: 'var(--font-display)',
-          fontWeight: 400,
-          fontSize: 'var(--t-h1)',
-          lineHeight: 'var(--lh-heading)',
-          letterSpacing: 'var(--tr-tight)',
-          color: 'var(--fg-1)',
-          margin: '64px 0 16px',
-        }}
-      >
-        {children}
-      </h1>
-    ),
-    h2: ({ children }) => (
-      <h2
-        style={{
-          fontFamily: 'var(--font-display)',
-          fontWeight: 400,
-          fontSize: 'var(--t-h2)',
-          lineHeight: 'var(--lh-heading)',
-          letterSpacing: 'var(--tr-tight)',
-          color: 'var(--fg-1)',
-          margin: '48px 0 16px',
-        }}
-      >
-        {children}
-      </h2>
-    ),
-    h3: ({ children }) => (
-      <h3
-        style={{
-          fontFamily: 'var(--font-sans)',
-          fontWeight: 600,
-          fontSize: 'var(--t-h3)',
-          lineHeight: 'var(--lh-heading)',
-          letterSpacing: 'var(--tr-snug)',
-          color: 'var(--fg-1)',
-          margin: '32px 0 12px',
-        }}
-      >
-        {children}
-      </h3>
-    ),
-    h4: ({ children }) => (
-      <h4
-        style={{
-          fontFamily: 'var(--font-sans)',
-          fontWeight: 600,
-          fontSize: 'var(--t-h4)',
-          color: 'var(--fg-1)',
-          margin: '24px 0 8px',
-        }}
-      >
-        {children}
-      </h4>
-    ),
+    h1: buildHeadingComponent('h1'),
+    h2: buildHeadingComponent('h2'),
+    h3: buildHeadingComponent('h3'),
+    h4: buildHeadingComponent('h4'),
     blockquote: ({ children }) => (
       <blockquote
         style={{
@@ -191,6 +239,39 @@ const components: PortableTextComponents = {
       );
     },
   },
+  types: {
+    image: ({ value }) => {
+      const v = value as { url?: string; alt?: string; caption?: string };
+      if (!v?.url) return null;
+      return (
+        <figure style={{ margin: '32px 0' }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={v.url}
+            alt={v.alt ?? ''}
+            style={{
+              width: '100%',
+              height: 'auto',
+              display: 'block',
+              borderRadius: 8,
+            }}
+          />
+          {v.caption && (
+            <figcaption
+              style={{
+                marginTop: 8,
+                fontSize: 'var(--t-small)',
+                color: 'var(--fg-3)',
+                textAlign: 'center',
+              }}
+            >
+              {v.caption}
+            </figcaption>
+          )}
+        </figure>
+      );
+    },
+  },
 };
 
 // The dashboard publishes drafts where the markdown begins with `# {title}`.
@@ -221,6 +302,14 @@ function stripDuplicateLeadingHeading(
   return body;
 }
 
+function formatDate(iso: string): string {
+  return new Date(iso).toLocaleDateString(undefined, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+
 export default async function BlogPostPage({
   params,
 }: {
@@ -232,6 +321,32 @@ export default async function BlogPostPage({
 
   const blocks = stripDuplicateLeadingHeading(post.body, post.title);
   const relatedAnswers = getAnswersForPost(post.slug);
+  const author = PEOPLE[NATHAN.id];
+
+  const description =
+    post.description?.trim() || excerptFromBody(post.body) || undefined;
+  const ogImage = ogImageUrl(post.title);
+
+  const jsonLd = renderJsonLd(
+    blogPostingJsonLd({
+      title: post.title,
+      slug: post.slug,
+      description,
+      image: ogImage,
+      datePublished: post.publishedAt,
+      dateModified: post.updatedAt,
+      authorId: NATHAN.id,
+    }),
+    breadcrumbJsonLd([
+      { name: 'Home', url: '/' },
+      { name: 'Blog', url: '/blog' },
+      { name: post.title, url: `/blog/${post.slug}` },
+    ]),
+  );
+
+  const showUpdated =
+    new Date(post.updatedAt).toDateString() !==
+    new Date(post.publishedAt).toDateString();
 
   return (
     <>
@@ -259,16 +374,13 @@ export default async function BlogPostPage({
           ← Back to blog
         </Link>
 
-        <header style={{ marginBottom: 56 }}>
+        <header style={{ marginBottom: 48 }}>
           <span
             className="eyebrow"
             style={{ display: 'block', marginBottom: 16 }}
           >
-            {new Date(post.updatedAt).toLocaleDateString(undefined, {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}
+            {formatDate(post.publishedAt)}
+            {showUpdated && ` · Updated ${formatDate(post.updatedAt)}`}
           </span>
           <h1
             className="display-3"
@@ -276,6 +388,19 @@ export default async function BlogPostPage({
           >
             {post.title}
           </h1>
+          {author && (
+            <p
+              style={{
+                margin: '20px 0 0',
+                fontFamily: 'var(--font-sans)',
+                fontSize: 'var(--t-small)',
+                color: 'var(--fg-3)',
+              }}
+            >
+              By <span style={{ color: 'var(--fg-2)' }}>{author.name}</span> ·{' '}
+              {author.role}
+            </p>
+          )}
         </header>
 
         <div>
@@ -330,6 +455,12 @@ export default async function BlogPostPage({
           </section>
         )}
       </article>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLd }}
+      />
+
       <Footer />
     </>
   );

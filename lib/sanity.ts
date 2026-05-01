@@ -33,21 +33,29 @@ export type BlogPostSummary = {
   _id: string;
   title: string;
   slug: string;
+  publishedAt: string;
   updatedAt: string;
 };
 
 export type BlogPostDetail = BlogPostSummary & {
   body: unknown;
+  description?: string;
 };
 
 export async function listBlogPosts(): Promise<BlogPostSummary[]> {
   if (!isSanityConfigured()) return [];
   const client = getClient();
   const docs = await client.fetch<
-    Array<{ _id: string; title?: string; slug?: { current?: string }; _updatedAt: string }>
+    Array<{
+      _id: string;
+      title?: string;
+      slug?: { current?: string };
+      _createdAt: string;
+      _updatedAt: string;
+    }>
   >(
     `*[_type == $type && defined(slug.current) && defined(title)] | order(_updatedAt desc) {
-      _id, title, slug, _updatedAt
+      _id, title, slug, _createdAt, _updatedAt
     }`,
     { type: DOCUMENT_TYPE },
   );
@@ -57,6 +65,7 @@ export async function listBlogPosts(): Promise<BlogPostSummary[]> {
       _id: d._id,
       title: d.title as string,
       slug: d.slug!.current as string,
+      publishedAt: d._createdAt,
       updatedAt: d._updatedAt,
     }));
 }
@@ -69,10 +78,12 @@ export async function getBlogPost(slug: string): Promise<BlogPostDetail | null> 
     title?: string;
     slug?: { current?: string };
     body?: unknown;
+    description?: string;
+    _createdAt: string;
     _updatedAt: string;
   } | null>(
     `*[_type == $type && slug.current == $slug] | order(_updatedAt desc)[0] {
-      _id, title, slug, body, _updatedAt
+      _id, title, slug, body, description, _createdAt, _updatedAt
     }`,
     { type: DOCUMENT_TYPE, slug },
   );
@@ -82,6 +93,8 @@ export async function getBlogPost(slug: string): Promise<BlogPostDetail | null> 
     title: doc.title,
     slug: doc.slug.current,
     body: doc.body ?? [],
+    description: doc.description,
+    publishedAt: doc._createdAt,
     updatedAt: doc._updatedAt,
   };
 }
