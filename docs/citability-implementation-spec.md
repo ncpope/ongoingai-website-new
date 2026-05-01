@@ -60,6 +60,8 @@ Every answer page's opening paragraph must pass all of these. Glossary entries f
 
 > The "spoken language" rule prevents sterility, not formality. The opening is still a declarative definition, not a chatty take. Encyclopedia tone, human cadence.
 
+**Practical test:** read the opening aloud. Would you say this sentence in a meeting? Would you expect to see it in a textbook? If both answers are yes, the encyclopedic/spoken balance is right.
+
 Reference paragraph (use as the bar):
 
 > Citability is how likely your content is to be used as a source by AI systems like ChatGPT. Content becomes citable when it clearly answers a specific question, uses precise language, and can be quoted directly without rewriting.
@@ -69,7 +71,7 @@ Reference paragraph (use as the bar):
 - [ ] First sentence is a one-line definition (≤25 words)
 - [ ] Total length 150–300 words
 - [ ] Ends with a "Read more" link to the canonical answer page
-- [ ] At most **one** example, ≤1 sentence — optional, not required (long examples belong on the answer page)
+- [ ] At most **one** example, ≤1 sentence — optional, not required. Heuristic: include one when the concept is hard to visualize without it (e.g., "atomic page", "answer-first content"). Skip when the term is self-explanatory from the definition alone.
 
 ### Page-level: the memorable line
 
@@ -77,7 +79,23 @@ Separate from the opening, every answer page must contain **at least one line in
 
 This rule lives at the page level, not the opening. The opening is definitional; the memorable line lives in the expansion or the contrast section. Don't force punchy one-liners into the opening — that's where the encyclopedia voice belongs.
 
+The line should be **structurally reusable**, not just punchy. Prefer compression, model shifts, and contrast over quips. A reusable line travels into other contexts; a quip dies on the page it was written for.
+
 Test: read the page, close the tab, write down the one sentence you remember. If you can't, the page doesn't have one yet.
+
+### Page-level: the contrast move
+
+Every answer page must contain at least one contrast sentence using the shape **"X is not Y. It is Z."**
+
+Why: contrast does definitional work and disambiguation in one move. It's one of the most cited shapes by LLMs because it both defines the term and rules out the obvious confound. It also "snaps" — the structure forces the reader's brain to commit.
+
+Example:
+
+> Citability is not about ranking higher in search results. It is about being selected as a source when an AI system generates an answer.
+
+Place: opening paragraph or first expansion paragraph. Never buried at the bottom.
+
+The contrast move and the memorable line can be the same sentence — and often should be. A well-built contrast usually *is* the memorable line.
 
 ## 5. Page templates
 
