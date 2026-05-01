@@ -7,7 +7,7 @@ import { Menu, X } from 'lucide-react';
 
 const NAV_LINKS = [
   { href: '/#how-it-works', label: 'How it works', external: false },
-  // { href: '/blog', label: 'Blog', external: false },
+  { href: '/blog', label: 'Blog', external: false },
   { href: '/newsletter', label: 'Newsletter', external: false },
 ] as const;
 

@@ -109,7 +109,7 @@ export function Footer() {
             items={[
               { label: 'How it works', href: '/#how-it-works' },
               { label: 'Join waitlist', href: '/#waitlist' },
-              // { label: 'Blog', href: '/blog' },
+              { label: 'Blog', href: '/blog' },
             ]}
           />
           <FooterCol
