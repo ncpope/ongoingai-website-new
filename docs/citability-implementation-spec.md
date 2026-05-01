@@ -55,6 +55,10 @@ Every answer page's opening paragraph must pass all of these. Glossary entries f
 - [ ] No hedging language ("can sometimes", "in some cases", "many people believe")
 - [ ] No anaphora to outside context ("this", "that", "these", "as mentioned")
 - [ ] No first-person plural ("we'll explore", "let's look at")
+- [ ] Concrete subjects over abstract phrasing — active voice, named actors (not "it can be observed that…")
+- [ ] Reads like something a human would actually say out loud — no academic register, no consultancy jargon
+
+> The "spoken language" rule prevents sterility, not formality. The opening is still a declarative definition, not a chatty take. Encyclopedia tone, human cadence.
 
 Reference paragraph (use as the bar):
 
@@ -65,7 +69,15 @@ Reference paragraph (use as the bar):
 - [ ] First sentence is a one-line definition (≤25 words)
 - [ ] Total length 150–300 words
 - [ ] Ends with a "Read more" link to the canonical answer page
-- [ ] No examples (those live on the answer page)
+- [ ] At most **one** example, ≤1 sentence — optional, not required (long examples belong on the answer page)
+
+### Page-level: the memorable line
+
+Separate from the opening, every answer page must contain **at least one line in the body that is quotable in isolation** — a sentence that compresses the idea into something a reader could repeat from memory.
+
+This rule lives at the page level, not the opening. The opening is definitional; the memorable line lives in the expansion or the contrast section. Don't force punchy one-liners into the opening — that's where the encyclopedia voice belongs.
+
+Test: read the page, close the tab, write down the one sentence you remember. If you can't, the page doesn't have one yet.
 
 ## 5. Page templates
 
@@ -233,7 +245,11 @@ Maintain the question set in `docs/citability-probe-questions.md` (separate file
 2. Answer page template (Next.js route) with full JSON-LD.
 3. Glossary page template with `DefinedTerm` JSON-LD.
 4. `Organization` JSON-LD in root layout.
-5. Write `/answers/what-is-citability` end-to-end as the reference implementation. Don't build the others until this one passes the writing checklist and Rich Results Test.
+5. Write `/answers/what-is-citability` end-to-end as the reference implementation. **Hard gate: do not build any other content (answers, glossary, blog refactor, indexes) until this page is undeniable.** Passing the writing checklist and Rich Results Test is necessary but not sufficient. The undeniable test:
+   - Read the opening aloud. Does it sound like the best definition of citability you've encountered?
+   - Close the tab and write the one sentence you remember. Does the page actually have one?
+   - Would you be embarrassed if a competitor's page got cited by ChatGPT *over* this one?
+   - If any answer is no, iterate. The first page is the standard; everything else copies it.
 6. Then: `/answers/why-llms-dont-cite-your-site`, `/answers/what-makes-content-citable`, `/answers/answer-first-content`.
 7. Glossary entries: `/glossary/citability`, `/glossary/geo`, `/glossary/answer-first-content`, `/glossary/atomic-page`.
 8. Refactor existing blog post to link into the new pages.
