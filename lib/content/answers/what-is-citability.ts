@@ -15,7 +15,7 @@ export const whatIsCitability: Answer = {
     'How does citability work?',
   ],
   shortAnswer:
-    'Citability is the property of web content that determines whether AI systems like ChatGPT use it as a source when generating answers. A citable page answers one specific question directly, uses precise language, and can be lifted into an AI response without rewriting.',
+    'Citability is what makes AI systems like ChatGPT cite your page as a source when answering a question. A page is citable when it answers one specific question directly, uses precise language, and can be lifted into an AI response without rewriting.',
   expansion: [
     'Citability is the visibility metric for the AI-search era. Where SEO measured whether your page appeared in a list of ten blue links, citability measures whether your page is chosen as the source behind a single synthesized answer.',
     'The shift matters because users no longer scan ten links and pick one. They read one answer and move on. If your page is not the source behind that answer, you do not exist in that conversation — regardless of what your Google rank says.',
@@ -36,7 +36,7 @@ export const whatIsCitability: Answer = {
   },
   example: {
     bad: 'In this article, we will explore the many ways citability can be understood, and look at how it has evolved over time.',
-    good: 'Citability is the property of web content that determines whether AI systems like ChatGPT use it as a source when generating answers.',
+    good: 'Citability is what makes AI systems like ChatGPT cite your page as a source when answering a question.',
     note: 'The bad opening defers the answer. The good opening is the answer — copy-paste ready, quotable in isolation.',
   },
   memorableLine:
@@ -70,11 +70,13 @@ export const whatIsCitability: Answer = {
     'answer-first-content',
   ],
   glossaryTermSlug: 'citability',
-  relatedPostSlugs: ['your-site-doesnt-show-up-in-chatgpt'],
+  relatedPostSlugs: [
+    'your-site-doesnt-show-up-in-chatgpt-for-your-own-category-heres-why',
+  ],
   authorId: 'nathan',
   publishedAt: '2026-04-30',
   lastUpdated: '2026-04-30',
   seoTitle: 'What is citability? — OngoingAI',
   seoDescription:
-    'Citability is the property of web content that determines whether AI systems like ChatGPT use it as a source. Definition, criteria, and how it differs from SEO.',
+    'Citability is what makes AI systems like ChatGPT cite your page as a source. Definition, criteria, and how it differs from SEO.',
 };

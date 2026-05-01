@@ -9,6 +9,7 @@ import {
   resolveRelatedAnswers,
 } from '@/lib/content/answers';
 import { getGlossaryEntry } from '@/lib/content/glossary';
+import { getBlogPost } from '@/lib/sanity';
 import { PEOPLE } from '@/lib/site';
 import {
   articleJsonLd,
@@ -68,6 +69,9 @@ export default async function AnswerPage({
     ? getGlossaryEntry(answer.glossaryTermSlug)
     : null;
   const author = PEOPLE[answer.authorId];
+  const relatedPosts = (
+    await Promise.all(answer.relatedPostSlugs.map((s) => getBlogPost(s)))
+  ).filter((p): p is NonNullable<typeof p> => Boolean(p));
 
   const jsonLd = renderJsonLd(
     articleJsonLd(answer),
@@ -407,6 +411,48 @@ export default async function AnswerPage({
             </Link>
             .
           </p>
+        )}
+
+        {relatedPosts.length > 0 && (
+          <section style={{ margin: '32px 0 0' }}>
+            <h2
+              style={{
+                fontFamily: 'var(--font-sans)',
+                fontWeight: 600,
+                fontSize: 'var(--t-h4)',
+                color: 'var(--fg-1)',
+                margin: '0 0 12px',
+              }}
+            >
+              From the blog
+            </h2>
+            <ul
+              style={{
+                listStyle: 'none',
+                padding: 0,
+                margin: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 8,
+              }}
+            >
+              {relatedPosts.map((post) => (
+                <li key={post._id}>
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    style={{
+                      color: 'var(--orange-600)',
+                      textDecoration: 'underline',
+                      textDecorationColor: 'var(--orange-200)',
+                      textUnderlineOffset: 3,
+                    }}
+                  >
+                    {post.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
         )}
 
         <footer

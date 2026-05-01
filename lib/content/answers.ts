@@ -39,3 +39,10 @@ export function resolveRelatedAnswers(slugs: string[]): Answer[] {
     .map((slug) => ANSWERS_BY_SLUG.get(slug))
     .filter((a): a is Answer => Boolean(a));
 }
+
+// Reverse lookup: which answers name this blog post in their relatedPostSlugs?
+// Used by blog post pages to render a "Related answers" section without needing
+// authors to add the link inside Sanity body content.
+export function getAnswersForPost(postSlug: string): Answer[] {
+  return ANSWERS.filter((a) => a.relatedPostSlugs.includes(postSlug));
+}

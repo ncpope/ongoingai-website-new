@@ -5,6 +5,7 @@ import { PortableText, type PortableTextComponents } from '@portabletext/react';
 import { Nav } from '@/components/Nav';
 import { Footer } from '@/components/Footer';
 import { getBlogPost } from '@/lib/sanity';
+import { getAnswersForPost } from '@/lib/content/answers';
 
 export const revalidate = 60;
 
@@ -230,6 +231,7 @@ export default async function BlogPostPage({
   if (!post) notFound();
 
   const blocks = stripDuplicateLeadingHeading(post.body, post.title);
+  const relatedAnswers = getAnswersForPost(post.slug);
 
   return (
     <>
@@ -279,6 +281,54 @@ export default async function BlogPostPage({
         <div>
           <PortableText value={blocks as never} components={components} />
         </div>
+
+        {relatedAnswers.length > 0 && (
+          <section
+            style={{
+              margin: '64px 0 0',
+              paddingTop: 32,
+              borderTop: '1px solid var(--border-1)',
+            }}
+          >
+            <h2
+              style={{
+                fontFamily: 'var(--font-sans)',
+                fontWeight: 600,
+                fontSize: 'var(--t-h4)',
+                color: 'var(--fg-1)',
+                margin: '0 0 16px',
+              }}
+            >
+              Related answers
+            </h2>
+            <ul
+              style={{
+                listStyle: 'none',
+                padding: 0,
+                margin: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 12,
+              }}
+            >
+              {relatedAnswers.map((a) => (
+                <li key={a.slug}>
+                  <Link
+                    href={`/answers/${a.slug}`}
+                    style={{
+                      color: 'var(--orange-600)',
+                      textDecoration: 'underline',
+                      textDecorationColor: 'var(--orange-200)',
+                      textUnderlineOffset: 3,
+                    }}
+                  >
+                    {a.question}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
       </article>
       <Footer />
     </>
