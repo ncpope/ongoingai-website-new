@@ -3,6 +3,7 @@ import { Instrument_Serif } from 'next/font/google';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import './globals.css';
+import { organizationJsonLd, renderJsonLd } from '@/lib/jsonld';
 
 const instrumentSerif = Instrument_Serif({
   subsets: ['latin'],
@@ -32,6 +33,14 @@ export default function RootLayout({
       lang="en"
       className={`${instrumentSerif.variable} ${GeistSans.variable} ${GeistMono.variable}`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: renderJsonLd(organizationJsonLd()),
+          }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   );

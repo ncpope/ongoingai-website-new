@@ -1,5 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { listBlogPosts, isSanityConfigured } from '@/lib/sanity';
+import { listAnswers } from '@/lib/content/answers';
+import { listGlossary } from '@/lib/content/glossary';
 
 const BASE_URL = 'https://ongoing.ai';
 
@@ -25,9 +27,37 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'daily',
       priority: 0.8,
     },
+    {
+      url: `${BASE_URL}/answers`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/glossary`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
   ];
 
-  if (!isSanityConfigured()) return staticEntries;
+  const answerEntries: MetadataRoute.Sitemap = listAnswers().map((answer) => ({
+    url: `${BASE_URL}/answers/${answer.slug}`,
+    lastModified: new Date(answer.lastUpdated),
+    changeFrequency: 'monthly',
+    priority: 0.9,
+  }));
+
+  const glossaryEntries: MetadataRoute.Sitemap = listGlossary().map((entry) => ({
+    url: `${BASE_URL}/glossary/${entry.slug}`,
+    lastModified: new Date(entry.lastUpdated),
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  }));
+
+  if (!isSanityConfigured()) {
+    return [...staticEntries, ...answerEntries, ...glossaryEntries];
+  }
 
   const posts = await listBlogPosts();
   const postEntries: MetadataRoute.Sitemap = posts.map((post) => ({
@@ -37,5 +67,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticEntries, ...postEntries];
+  return [...staticEntries, ...postEntries, ...answerEntries, ...glossaryEntries];
 }
