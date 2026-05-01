@@ -15,11 +15,11 @@ export const whatIsCitability: Answer = {
     'How does citability work?',
   ],
   shortAnswer:
-    'Citability is what makes AI systems like ChatGPT cite your page as a source when answering a question. A page is citable when it answers one specific question directly, uses precise language, and can be lifted into an AI response without rewriting.',
+    'Citability is whether an AI system like ChatGPT chooses your page as a source when answering a question. A page is citable when it answers one specific question directly, uses precise language, and can be lifted into an AI response without rewriting.',
   expansion: [
-    'Citability is the visibility metric for the AI-search era. Where SEO measured whether your page appeared in a list of ten blue links, citability measures whether your page is chosen as the source behind a single synthesized answer.',
-    'The shift matters because users no longer scan ten links and pick one. They read one answer and move on. If your page is not the source behind that answer, you do not exist in that conversation — regardless of what your Google rank says.',
-    'Citability is not a tweak on top of SEO. It is a different optimization target: the retrieval-and-synthesis step inside an LLM, not the ranking step inside a search engine.',
+    'Most content is not citable because it is written to rank for keywords, not to answer a specific question.',
+    'Citability is the visibility metric for the AI-search era. Where SEO measures ranking in a list of links, citability measures whether your page is chosen as the source behind a single synthesized answer.',
+    'Users no longer scan ten links and pick one. They read one answer and move on. If your page is not the source behind that answer, you are not part of that conversation — regardless of what your Google rank says.',
   ],
   contrast:
     'Citability is not about ranking higher in search results. It is about being chosen as the source behind a generated answer.',
@@ -28,15 +28,15 @@ export const whatIsCitability: Answer = {
     items: [
       'The opening paragraph answers the question directly, with no setup.',
       'Definitions are self-contained — quotable without surrounding context.',
-      'The page contains the literal phrasing of how the question is actually asked.',
+      'The page includes the exact phrasing of the question as users actually ask it.',
       'Language is precise and concrete; no hedging, no jargon, no padding.',
       'The page covers a single, narrow question — not a survey of a topic.',
       'Authorship, sources, and the last-updated date are visible and verifiable.',
     ],
   },
   example: {
-    bad: 'In this article, we will explore the many ways citability can be understood, and look at how it has evolved over time.',
-    good: 'Citability is what makes AI systems like ChatGPT cite your page as a source when answering a question.',
+    bad: 'In this article, we will explore the concept of citability and discuss its importance in modern AI systems.',
+    good: 'Citability is whether an AI system like ChatGPT chooses your page as a source when answering a question.',
     note: 'The bad opening defers the answer. The good opening is the answer — copy-paste ready, quotable in isolation.',
   },
   memorableLine:
@@ -45,12 +45,12 @@ export const whatIsCitability: Answer = {
     {
       question: 'How is citability different from SEO?',
       answer:
-        'SEO optimizes for ranking in a list of links. Citability optimizes for being chosen as the source behind a generated answer. SEO targets crawlers; citability targets the retrieval-and-synthesis step inside an LLM.',
+        'SEO optimizes for ranking in a list of links. Citability optimizes for being chosen as the source behind a generated answer. SEO targets crawlers; citability targets the moment an AI system picks what to quote.',
     },
     {
       question: 'How do I know if my content is citable?',
       answer:
-        'Test it directly. Ask ChatGPT, Claude, Perplexity, and Gemini the exact question your page answers. If your page is not cited and your framing does not appear in the response, your content is not yet citable for that query.',
+        'Test it directly: ask ChatGPT, Claude, Perplexity, or Gemini the exact question your page answers. If your page is not cited and your framing does not appear in the response, your content is not yet citable for that query.',
     },
     {
       question: 'Does citability replace SEO?',
@@ -78,5 +78,5 @@ export const whatIsCitability: Answer = {
   lastUpdated: '2026-04-30',
   seoTitle: 'What is citability? — OngoingAI',
   seoDescription:
-    'Citability is what makes AI systems like ChatGPT cite your page as a source. Definition, criteria, and how it differs from SEO.',
+    'Citability is whether an AI system like ChatGPT chooses your page as a source when answering a question. Definition, criteria, and how it differs from SEO.',
 };
