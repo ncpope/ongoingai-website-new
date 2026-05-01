@@ -37,7 +37,7 @@ export default function AnswersIndexPage() {
             className="display-2"
             style={{ marginBottom: 16, maxWidth: 720 }}
           >
-            Citable answers about AI search.
+            Plain answers on AI search.
           </h1>
           <p
             style={{
@@ -47,9 +47,10 @@ export default function AnswersIndexPage() {
               color: 'var(--fg-3)',
             }}
           >
-            Direct answers to the questions founders are asking ChatGPT,
-            Claude, Perplexity, and Gemini about generative engine
-            optimization. Each page answers one question, end to end.
+            One question per page. Generative engine optimization,
+            citability, and the rest of the AI-search vocabulary —
+            answered the way founders are asking it to ChatGPT, Claude,
+            Perplexity, and Gemini.
           </p>
         </header>
 
