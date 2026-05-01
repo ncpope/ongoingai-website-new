@@ -11,6 +11,7 @@ export const ORGANIZATION = {
     'https://www.facebook.com/OngoingAI',
     'https://github.com/ongoingai',
     'https://www.youtube.com/channel/UCusiu-uFL2PAtdGIaGg7PZw',
+    'https://www.instagram.com/ongoinghq',
   ],
 } as const;
 
